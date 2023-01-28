@@ -1,9 +1,11 @@
-const express = require("express");
+const express = require('express');
 const app = express();
 
-app.get("/", (req, res) => {
+app.get('/', (req, res) => {
     res.send("this is test site!");
 })
+
+app.use('/gsheet', require('./routes/gsheet'));
 
 const port = process.env.PORT || 1337;
 

@@ -9,6 +9,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cors());
 
+app.use("/", (req, res) => {
+  res.send("this is api server!")
+})
+
 // 設定路由
 app.use('/api/gsheet', require('./routes/gsheet'));
 

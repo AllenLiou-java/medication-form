@@ -1,15 +1,11 @@
 const express = require('express');
 const { google } = require('googleapis');
-const path = require('path');
-const process = require('process');
 const router = express.Router();
-const CREDENTIALS_PATH = path.join(process.cwd(), 'credentials.json');
-
 
 async function authSheets() {
   //Function for authentication object
   const auth = new google.auth.GoogleAuth({
-    keyFile: CREDENTIALS_PATH,
+    keyFile: 'credentials.json',
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
 

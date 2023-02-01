@@ -214,12 +214,13 @@ async function getTargetRowInfo(selectedDate) {
   const dateList = dataList.map((item) => {
     return item[0];
   });
+  
 
   const targetIndex = dateList.indexOf(dateFormate);
   const targetRowValue = dataList[targetIndex];
   const resValue = {};
 
-  if (targetIndex > 0) {
+  if (targetIndex >= 0) {
     resValue.index = targetIndex;
     resValue.targetValue = targetRowValue;
   } else {
@@ -235,13 +236,12 @@ router.get('/getData', async (req, res) => {
   const target = await getTargetRowInfo(querySelectedDate);
 
   let resValue = null;
-  if (target.index > 0) {
+  if (target.index >= 0) {
     const targetValue = target.targetValue;
     resValue = responseFormat(targetValue);
   } else {
     resValue = initResponseData();
   }
-
   res.send(resValue);
 });
 

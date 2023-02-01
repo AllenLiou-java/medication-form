@@ -264,6 +264,7 @@ router.post('/addData', async (req, res) => {
     notesContent,
   } = formValue;
 
+
   const requests = [];
 
   const target = await getTargetRowInfo(req.body.selectedDate);
@@ -352,13 +353,13 @@ router.post('/addData', async (req, res) => {
         },
         {
           userEnteredValue: {
-            stringValue: dosage.onAm,
+            stringValue: dosage.onAm == null? '': dosage.onAm.toString(),
           },
           userEnteredFormat: cellsFormater(),
         },
         {
           userEnteredValue: {
-            stringValue: dosage.onPm,
+            stringValue: dosage.onPm == null? '': dosage.onPm.toString(),
           },
           userEnteredFormat: cellsFormater(),
         },

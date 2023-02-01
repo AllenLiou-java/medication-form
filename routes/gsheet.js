@@ -352,13 +352,13 @@ router.post('/addData', async (req, res) => {
         },
         {
           userEnteredValue: {
-            stringValue: dosage.onAm.toString(),
+            stringValue: dosage.onAm,
           },
           userEnteredFormat: cellsFormater(),
         },
         {
           userEnteredValue: {
-            stringValue: dosage.onPm.toString(),
+            stringValue: dosage.onPm,
           },
           userEnteredFormat: cellsFormater(),
         },

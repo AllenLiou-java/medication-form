@@ -370,7 +370,7 @@ router.post('/addData', async (req, res) => {
           userEnteredFormat: cellsFormater(
             bloodPressure.am[0].value,
             true,
-            120,
+            90,
             140
           ),
         },
@@ -381,7 +381,7 @@ router.post('/addData', async (req, res) => {
           userEnteredFormat: cellsFormater(
             bloodPressure.am[1].value,
             true,
-            80,
+            60,
             90
           ),
         },

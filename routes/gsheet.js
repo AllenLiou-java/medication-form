@@ -594,6 +594,19 @@ router.post('/addData', async (req, res) => {
     },
   ];
 
+  // 調整行距
+  const rowStyle = {
+    properties: {
+      pixelSize: 50
+    },
+    fields: 'pixelSize',
+    range: {
+      sheetId: sheetId,
+      dimension: 'ROWS',
+      startIndex: 3
+    }
+  }
+
   // 已經存有指定日期的資料
   if (targerIndex < 0) {
     // 在最後一行加入資料
@@ -602,7 +615,10 @@ router.post('/addData', async (req, res) => {
         sheetId,
         rows: rowsContent,
         fields: '*',
-      },
+      }
+    });
+    requests.push({
+      updateDimensionProperties: rowStyle
     });
   } else {
     requests.push({
@@ -613,7 +629,7 @@ router.post('/addData', async (req, res) => {
           sheetId,
           rowIndex: parseInt(targerIndex) + 3,
         },
-      },
+      }
     });
   }
 

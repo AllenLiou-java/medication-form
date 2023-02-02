@@ -40,7 +40,7 @@ function requestBodyFormat(orignData) {
   const dateFormate = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
 
   // 星期日期列表
-  const dayList = ['一', '二', '三', '四', '五', '六', '日'];
+  const dayList = ['日', '一', '二', '三', '四', '五', '六' ];
 
   dataObj.selectedDate = dateFormate;
   dataObj.selectedDay = dayList[d.getDay()];

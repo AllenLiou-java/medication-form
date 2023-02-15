@@ -54,6 +54,7 @@ function requestBodyFormat(orignData) {
     digestiveSysInfo,
     othersInfo,
     notesContent,
+    weight
   } = dataObj;
 
   // 轉換皮膚症狀 - 已選取清單
@@ -80,6 +81,7 @@ function requestBodyFormat(orignData) {
     digestiveSysInfo,
     othersInfo,
     notesContent,
+    weight
   };
 }
 
@@ -111,6 +113,7 @@ function initResponseData() {
     },
     othersInfo: { checkedLesions: [], lesions: ['疲勞', '出血', '發燒'] },
     notesContent: null,
+    weight: null
   };
 }
 
@@ -188,6 +191,7 @@ function responseFormat(targetValue) {
   initData.othersInfo.checkedLesions = othersCheckedLesions;
 
   initData.notesContent = targetValue[25];
+  initData.weight = targetValue[26];
 
   return initData;
 }
@@ -197,7 +201,7 @@ async function getDataList() {
   const { sheets, spreadsheetId } = await authSheets();
   const getRows = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: 'Data!A:Z',
+    range: 'Data!A:AA',
   });
 
   // 將資料轉換為前端的格式
@@ -262,6 +266,7 @@ router.post('/addData', async (req, res) => {
     digestiveSysInfo,
     othersInfo,
     notesContent,
+    weight
   } = formValue;
 
 
@@ -587,6 +592,12 @@ router.post('/addData', async (req, res) => {
         {
           userEnteredValue: {
             stringValue: notesContent,
+          },
+          userEnteredFormat: cellsFormater(),
+        },
+        {
+          userEnteredValue: {
+            stringValue: weight,
           },
           userEnteredFormat: cellsFormater(),
         },
